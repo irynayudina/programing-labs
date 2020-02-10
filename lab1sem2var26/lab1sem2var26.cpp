@@ -10,7 +10,7 @@ double dA26(double x) {
 	return (exp(2*x)+1)/exp(x);
 }
 double B26(double x) {
-	return x * (tan(x)) - 0.333333333333333;//Проблема заключалалась в 1/3. Когда я заменила 1/3 на 0,333333 ве стало считаться нормально
+	return x * (tan(x)) - 0.333333333333333;//Проблема заключалалась в 1/3. Когда я заменила 1/3 на 0,333333 все стало считаться нормально
 }
 double dB26(double(x)) {
 	return (((cos(x)) * (sin(x)) + x))/((cos(x)*cos(x)));
@@ -30,7 +30,7 @@ double FindRoot(double (*f)(double), double x0, int imax, int &ifact, double (*d
 void Result(double a, double b, int ifact, double x) {
 	cout << "Корень " << x << " функции " << "на промежутке [" << a << ", " << b << "] найден за " << ifact << " шагов" << endl;
 }
-//Фуекция проверки на точность найденого корня
+//Функция проверки на точность найденого корня
 bool isRoot(double (*f)(double), double r) {
 	if (f(r) < 0,00001) {
 		return true;
