@@ -1,0 +1,2 @@
+D:\source\repos\Lab2Sem2\Debug\Lab2Sem2.exe
+D:\source\repos\Lab2Sem2\Debug\Lab2Sem2.pdb
