@@ -19,34 +19,40 @@ int main()
     */   
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	int n;
-	cout << "Введите длинну строки" << endl;
-	cin >> n;
-	cin.clear();
-	cin.ignore(32767, '\n');
-	cout << "Введите строку для анализа" << endl;
+	int n = 0;
+	while (n <= 0) {
+		cout << "Введите длинну строки" << endl;
+		cin >> n;
+		cin.clear();
+		cin.ignore(32767, '\n');
+	}
 	char* str1 = new char[n+1];//(char*)malloc((n + 1) * sizeof(char));///
 	*str1 = '\0';
 	char* str2 = new char[2*n+1];//(char*)malloc((n + 1) * sizeof(char));
 	*str2 = '\0';//добавление нуля на место первого елемента массива чтобы иметь возможность конкатинировать к нему строки
-	cin.getline(str1, n+1, '\n');
-	cin.clear();
-	cin.ignore(32767, '\n');
+	while (*str1 == '\0') {
+		cout << "Введите строку для анализа" << endl;
+		cin.getline(str1, n + 1, '\n');
+		cin.clear();
+		cin.ignore(32767, '\n');
+	}
 	char* inpStr = new char[n + 1];//(char*)malloc((n + 1) * sizeof(char)); Create copy of str1 для того чтоб иметь доступ к 
 	//не измененной функцией strtok_s строке и взять из нее разделители чтоб присоеденить к измененнной строке
 
 	strxfrm(inpStr, str1, n+1);//копировать содержимое введенной строки в другой массив чтоб иметь доступ к неизменной 
 	if (*(str1 + n) != '\0') {
-		cout << *(str1 + n ) << endl;
+		//cout << *(str1 + n ) << endl;
 		cout << "Длинна введеной строки превышает (или не достигает) заданое вами значение." << endl <<
 			"Обрабатываться будеть только та часть строки длинна которой входит в значение, остальная часть будет утеряна" << endl <<
 			"Строка: " << str1 << endl;
 	}
-	int lenOfWord;
-	cout << "Введите длинну слова" << endl;
-	cin >> lenOfWord;
-	cin.clear();
-	cin.ignore(32767, '\n');
+	int lenOfWord = 0;
+	while (lenOfWord <= 0 || lenOfWord > n) {
+		cout << "Введите длинну слова" << endl;
+		cin >> lenOfWord;
+		cin.clear();
+		cin.ignore(32767, '\n');
+	}
 	const char* separators = " ,./?!|";
 	char* token = nullptr, *next=nullptr;
 	token = strtok_s(str1, separators, &next);//взять первый токет строки
